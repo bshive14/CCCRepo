@@ -1596,6 +1596,7 @@ let year=date.getFullYear();
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt'}}>
 Name: {localStorage.getItem("name")}<br/>
 Course on Computer Concepts (CCC) Exam
+comment123
 </th>
 {/* <MyStop/> */}
 
