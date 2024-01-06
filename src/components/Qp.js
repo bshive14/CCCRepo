@@ -56,14 +56,24 @@ function r4()
   console.log('clicked',c4);
 }
 function getSave()
-{
+{let g=parseInt(data1[1]);
+  let g1=parseInt(data1.substring(1,3));
+  console.log("qno",data1[1]);
+  console.log("qnobada",g1);
   if(c1==1)
   {
-    fr=fr+1;
-console.log("s1",c1,data1);
-// {result=result+1;}
-setresult(fr);
-console.log("s1",result);
+       if(g==1 ||g==4 ||g1==38||g1==61||g1==63||g1==69)
+       {
+        fr=fr+1;
+        // console.log("s1",c1,data1[1],"...",data1);
+        // {result=result+1;}
+        setresult(fr);
+        console.log("s1",result);
+        g=0;
+       }
+    
+
+   
   }
   if(c1==2)
   {
@@ -1652,6 +1662,7 @@ let year=date.getFullYear();
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
 Course on Computer Concepts (CCC) Exam<br/>
 Name: {localStorage.getItem("name")}
+{result}
 </th>
 </tr>
 <tr>
