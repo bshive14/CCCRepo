@@ -6,8 +6,9 @@ import { questions } from './q';
  import { options } from './opt';
 import { useState } from 'react';
 let d=0;
-
+let fr=0;
 let q=[]
+
  function Qp(props) {
  let f=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
@@ -18,12 +19,65 @@ let q=[]
   const [data2, getdata2]=useState(false)
   const [data3, getdata3]=useState(0)
 
-  const [op, setop]=useState(0)
-  const [op2, setop2]=useState(0)
-  const [op3, setop3]=useState(0)
-  const [op4, setop4]=useState(0)
-  const [name, setname]=useState(" ")
+  const [op, setop]=useState(0);
+  const [op2, setop2]=useState(0);
+  const [op3, setop3]=useState(0);
+  const [op4, setop4]=useState(0);
+  const [name, setname]=useState(" ");
   const [result,setresult]=useState(0); 
+  
+  const [c1, setc1]=useState(0);
+  const [c2, setc2]=useState(0);
+  const [c3, setc3]=useState(0);
+  const [c4, setc4]=useState() ;
+
+  function r1()
+{
+  setc1(1);
+ 
+  console.log('clicked',c1);
+}
+function r2()
+{ 
+  setc1(2);
+  
+  console.log('clicked',c2);
+}
+function r3()
+{
+  setc1(3);
+  
+  console.log('clicked',c3);
+}
+function r4()
+{
+  setc1(4);
+ 
+  console.log('clicked',c4);
+}
+function getSave()
+{
+  if(c1==1)
+  {
+    fr=fr+1;
+console.log("s1",c1,data1);
+// {result=result+1;}
+setresult(fr);
+console.log("s1",result);
+  }
+  if(c1==2)
+  {
+console.log("s1",c1,data1);
+  }
+  if(c1==3)
+  {
+console.log("s1",c1,data1);
+  }
+  if(c1==4)
+  {
+console.log("s1",c1,data1);
+  }
+}
 
  
 function getQ(){
@@ -37,6 +91,7 @@ setop(options[d][0])
 setop2(options[d][(e+1)])
 setop3(options[d][(e+2)])
 setop4(options[d][(e+3)])
+console.log("q",d);
 // console.log("d",d,data,op,op2,op3,op4);
 // console.log("d..",options[d][d+3])
  d=d+1;
@@ -58,6 +113,8 @@ setop4(options[d][3])
 
 React.useEffect(()=>{
   let e=0;
+
+  
   // getdata2(true);
   // getdata3(questions[d]);
   // // getdata2(f[d]);
@@ -70,7 +127,7 @@ get1();
 
 
   setname(localStorage.getItem("name"));
-  setresult(1);
+  // setresult(1);
   localStorage.setItem("result",result);
   
 },[1])
@@ -79,7 +136,7 @@ function get1(){
   let e=0;
   d=1;
 getdata(true);
-getdata2(false);
+getdata2(true);
 getdata1(questions[0]);
 getdata2(f[1]);
 setop(options[0][0])
@@ -1573,11 +1630,8 @@ console.log("d..",options[d][d+3]);
 e=e+1;
 
 }
-function r1()
-{
-  setresult(1);
-  console.log('clicked',result);
-}
+
+
 let date=new Date();
 let dt=date.getDate();
 let month=date.getMonth();
@@ -1591,26 +1645,96 @@ let year=date.getFullYear();
   
   return (
    <div>
-      <table width="1330" height="200" border="0" cellspacing="2" cellpadding="2" style={{marginTop:-35,position:'absolute',align:'center'}}>
-<tr>
-<th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt'}}>
-Name: {localStorage.getItem("name")}<br/>
-Course on Computer Concepts (CCC) Exam
-comment123
+      <div class="row">
+  <div class="column">
+    <table border="0" style={{width:800}}>
+      <tr>
+<th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
+Course on Computer Concepts (CCC) Exam<br/>
+Name: {localStorage.getItem("name")}
 </th>
-{/* <MyStop/> */}
-
-
 </tr>
 <tr>
-  
-<th colspan="14"><button style={{borderRadius:'8px 2px',height:40,width:300,background:'teal', color:'white',marginLeft:23}}>Hit the number to navigate the Question</button></th>
 </tr>
-<tr style={{fontSize:'12pt'}}>
-{/* <th rowspan="12" colspan="5" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}></th> */}
-{/* <th colspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}} >{data2 &&  data3}</th> */}
-  <th colspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}} >{data &&  data1}</th>
-<th colspan="4"></th>
+<tr>
+        <th colspan="2" rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}} >{data &&  data1}</th>
+        
+      </tr>
+<tr>
+</tr>
+      <tr>
+        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1}/>
+  <label class="form-check-label" for="flexRadioDefault2"/>
+{data && op}
+</th>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r2}/>
+  <label class="form-check-label" for="flexRadioDefault2"/>
+  {data && op2}
+</th>
+      </tr>
+      <tr>
+        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r3} />
+  <label class="form-check-label" for="flexRadioDefault2"/>
+  {data && op3}
+</th>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r4}/>
+  <label class="form-check-label" for="flexRadioDefault2"/>
+  {data && op4}
+</th>
+
+      </tr>
+      <tr>
+        <th rowspan="3">
+          <br/>
+        </th>
+      </tr>
+      <tr></tr>
+      <tr>
+
+      </tr>
+      <tr></tr>
+      <tr>
+        <th rowspan="3">
+          <br/>
+          <br/>
+          <br/>
+        </th>
+        <th>
+<button type="button" class="btn btn-success"  style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getSave} >Save</button>      
+        </th>
+      </tr>
+<tr rowspan="4">
+  <th colspan="2"></th>
+</tr>
+<tr>
+  <th colspan="2"></th>
+</tr>
+<tr>
+<th colspan="2"></th>
+</tr>
+<tr>
+</tr>
+<tr>
+  <center>
+<th>
+<button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}}  onClick={getP}>Previous</button>      
+        </th>
+        </center>
+<th>
+  <center>
+        <button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}} onClick={getQ}>Next</button>      
+        </center>
+ </th>
+</tr>
+    </table>
+  </div>
+
+  <div class="column">
+    <table border="0" style={{width:400,marginLeft:180}}>
+      <tr>
+        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:23}}>Hit the number to navigate the Question</button></th>
+      </tr>
+      <tr>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get1}>1</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get2}>2</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get3}>3</button></th>
@@ -1621,18 +1745,10 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} oonClick={get8}>8</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get9}>9</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get10}>10</button></th>
-</tr>
-<tr>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-  <label class="form-check-label" for="flexRadioDefault2"/>
-{data && op}
-</th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"/>
-  <label class="form-check-label" for="flexRadioDefault2"/>
-  {data && op2}
-</th>
-<th colspan="4" rowspan="10"></th>
-<th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get11}>11</button></th>
+
+      </tr>
+      <tr>
+        <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get11}>11</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get12}>12</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get13}>13</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get14}>14</button></th>
@@ -1642,17 +1758,9 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get18}>18</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get19}>19</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get20}>20</button></th>
-</tr>
-<tr>
-<th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r1} />
-  <label class="form-check-label" for="flexRadioDefault2"/>
-  {data && op3}
-</th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4"/>
-  <label class="form-check-label" for="flexRadioDefault2"/>
-  {data && op4}
-</th>
-<th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get21}>21</button></th>
+      </tr>
+      <tr>
+        <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get21}>21</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get22}>22</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get23}>23</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get24}>24</button></th>
@@ -1662,13 +1770,8 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get28}>28</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get29}>29</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get30}>30</button></th>
-</tr>
-
+      </tr>
 <tr>
-  <th>
-
-  </th>
-  <th></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get31}>31</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get32}>32</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get33}>33</button></th>
@@ -1679,15 +1782,8 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get38}>38</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get39}>39</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get40}>40</button></th>
-
 </tr>
 <tr>
-<th align='right'>
-<button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}} onClick={get1} onClick="">Save</button>      
-        </th>
-<th align='center'>
-        
- </th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get41}>41</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get42}>42</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get43}>43</button></th>
@@ -1698,13 +1794,9 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get48}>48</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get49}>49</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get50}>50</button></th>
-       
+
 </tr>
 <tr>
-<th>
-
-</th>
-<th></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get51}>51</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get52}>52</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get53}>53</button></th>
@@ -1715,14 +1807,10 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get58}>58</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get59}>59</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get60}>60</button></th>
+
 </tr>
+
 <tr>
-<th align='center'>
-<button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}}  onClick={getP}>Previous</button>      
-        </th>
-<th align='center'>
-        <button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}} onClick={getQ}>Next</button>      
- </th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get61}>61</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get62}>62</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get63}>63</button></th>
@@ -1735,8 +1823,6 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get70}>70</button></th>
 </tr>
 <tr>
-<th colspan="2">
-</th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get71}>71</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get72}>72</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get73}>73</button></th>
@@ -1747,10 +1833,9 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get78}>78</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get79}>79</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get80}>80</button></th>
+
 </tr>
 <tr>
-  <th></th>
-  <th></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get81}>81</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get82}>82</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get83}>83</button></th>
@@ -1763,8 +1848,6 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get90}>90</button></th>
 </tr>
 <tr>
-<th colspan="2">
-</th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get91}>91</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get92}>92</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get93}>93</button></th>
@@ -1775,13 +1858,12 @@ comment123
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get98}>98</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get99}>99</button></th>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get100}>100</button></th>
-
 </tr>
 
-<tr>
-</tr>
 
-</table>
+    </table>
+  </div>
+</div>
    </div>
 
   );

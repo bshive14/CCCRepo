@@ -45,7 +45,7 @@ export default function Name() {
               Enter you details to start your exam.
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-            <table border={0} align="center"/>
+            <table border={0} align="left"/>
         <tr>
             <th>Name</th>
             <th><input type="text"/></th>
