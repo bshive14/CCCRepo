@@ -8,7 +8,8 @@ import { useState } from 'react';
 let d=0;
 let fr=0;
 let q=[]
-
+let ans =1,ans1=1,ans2=1,ans3=1,ans4=1,ans5=1,ans6=1,ans7=1,ans8=1,ans9=1,ans10=1,ans11=1,ans12=1,ans13=1,ans14=1,ans15=1,ans16=1,ans17=1,ans18=1,ans19=1;
+let ua={};
  function Qp(props) {
  let f=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
@@ -56,24 +57,227 @@ function r4()
   console.log('clicked',c4);
 }
 function getSave()
-{
+{let g=parseInt(data1[1]);
+  let g1=parseInt(data1.substring(1,3));
+  let g2=parseInt(data1.substring(1,4));
+  console.log("qno",data1[1]);
+  console.log("qnobada",g1);
   if(c1==1)
   {
-    fr=fr+1;
-console.log("s1",c1,data1);
-// {result=result+1;}
-setresult(fr);
-console.log("s1",result);
+    if(g==1 && ans ==1)
+    {
+     fr=fr+1;
+     // console.log("s1",c1,data1[1],"...",data1);
+     // {result=result+1;}
+     setresult(fr);
+     console.log("s1",result);
+     ans=ans+1;
+     ua['1']=1;
+    
+    }
+   
+    if(g==4 && ans1 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans1=ans1+1;
+     ua['2']=2;
+    
+    }
+    if(parseInt(g1)==38 && ans2 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans2=ans2+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==61 && ans3 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans3=ans3+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==63 && ans4 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans4=ans4+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==68 && ans5 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans5=ans5+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==69 && ans6 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans6=ans6+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==70 && ans7 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans7=ans7+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==71 && ans8 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans8=ans8+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==72 && ans9 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans9=ans9+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==75 && ans10 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans10=ans10+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==78 && ans11 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans11=ans11+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==82 && ans12 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans12=ans12+1;
+     ua['3']=4;
+    
+    }
+    if(parseInt(g1)==83 && ans13 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans13=ans13+1;
+     ua['3']=4;
+    
+    }
+        if(parseInt(g1)==89 && ans14 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans14=ans14+1;
+     ua['3']=4;
+    
+    }
+        if(parseInt(g1)==95 && ans15 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans15=ans15+1;
+     ua['3']=4;
+    
+    }
+        if(parseInt(g1)==96 && ans16 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans16=ans16+1;
+     ua['3']=4;
+    
+    }
+      if(parseInt(g1)==98 && ans17 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans17=ans17+1;
+     ua['3']=4;
+    
+    }
+      if(parseInt(g1)==99 && ans17 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans17=ans17+1;
+     ua['3']=4;
+    
+    }
+      if(parseInt(g2)==100 && ans18 ==1)
+    {
+     fr=fr+1;
+   
+     setresult(fr);
+     console.log("s1",result);
+     ans18=ans18+1;
+     ua['3']=4;
+    
+    }
+
+   
   }
-  if(c1==2)
+  if(c2==2)
   {
 console.log("s1",c1,data1);
   }
-  if(c1==3)
+  if(c3==3)
   {
 console.log("s1",c1,data1);
   }
-  if(c1==4)
+  if(c4==4)
   {
 console.log("s1",c1,data1);
   }
@@ -1652,6 +1856,7 @@ let year=date.getFullYear();
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
 Course on Computer Concepts (CCC) Exam<br/>
 Name: {localStorage.getItem("name")}
+{result}
 </th>
 </tr>
 <tr>
