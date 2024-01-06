@@ -10,6 +10,7 @@ import Pymod from './components/TopNavModal/Pymod';
 import IOTmod from './components/TopNavModal/IOTmod';
 import { RankMod } from './components/RankMod';
 
+
  export default function App(props) {
   return (
     <div className="App" style={{"backgroundColor":'HEX #6600ff'}} >
@@ -46,7 +47,7 @@ import { RankMod } from './components/RankMod';
 <img src="es.gif" alt="qAi" width="35%" height="300"/>
 </div>
 <div>
-  <RankMod/>
+   <RankMod/>
 </div>
 <div>
 {/* <Quotes/> */}

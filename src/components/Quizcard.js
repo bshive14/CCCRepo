@@ -4,7 +4,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 import Typography from '@mui/material/Typography';
-
 import Qp from './Qp';
 
 
@@ -18,7 +17,7 @@ export default function Quizcard() {
   return (
     <div>
         
-    <Card sx={{ maxWidth:'150%'}} style={{height:632,textAlign:'center',background:'white',marginLeft:-25,marginRight:-25}}>
+    <Card sx={{ maxWidth:'150%'}} style={{height:628,textAlign:'center',background:'white',marginLeft:-25,marginRight:-25}}>
     
       <CardContent alignItems={'centre'}>
         <Typography gutterBottom variant="h5" component="div" alignItems={'centre'}>

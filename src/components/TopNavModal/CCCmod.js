@@ -75,7 +75,7 @@ export default function CCCmod() {
         aria-describedby="modal-modal-description"
         
       >
-        <Box sx={style} height={700} style={{'background':'#15f4ee',width:1300}}>
+        <Box sx={style} height={760} style={{'background':'#15f4ee',width:1370}}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
           CCC Exam <br/>
           {open1 && <CCCQuiz/>}
@@ -89,7 +89,7 @@ export default function CCCmod() {
          4:- After 60 minutes paper will be submitted.<br/>
          Best of Luck!!<br/>
          <br/>
-         <table border={0} align="center" width={'50%'}>
+         <table border={0} style={{align:'right',width:300}}>
         <tr>
           
           <th colSpan={2}> Enter your detail to start your exam</th>
@@ -97,20 +97,20 @@ export default function CCCmod() {
         
         <tr>
          
-            <th align='right'>Name</th>
-            <th><input placeholder="uname" id='nm' onChange={(e)=>setName(e.target.value)}/></th>
+            <td align='right'>Name</td>
+            <td><input placeholder="uname" id='nm' onChange={(e)=>setName(e.target.value)}/></td>
         </tr>
         <tr>
          
-            <th align='right'>Contact No</th>
-            <th><input placeholder="uname" id='ph' onChange={(e)=>localStorage.setItem("name",e.target.value)}/></th>
+            <td align='right'>Contact No</td>
+            <td><input placeholder="uname" id='ph' onChange={(e)=>localStorage.setItem("name",e.target.value)}/></td>
         </tr>
         <tr>
          <th>
 
          </th>
-        <th><button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',align:'center'}} onClick={Handler1} id="bt1">Start Exam</button>
-        </th>
+        <td><button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',align:'center'}} onClick={Handler1} id="bt1">Start Exam</button>
+        </td>
         </tr>
         </table>
          <br/>
