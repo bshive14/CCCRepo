@@ -145,7 +145,7 @@ export const options=[
       ,'B)  Presentation layer','C) Transport layer'
       ,'D)  Network layer' ],
     [  'A) Data link layer'
-      ,'B)  Network layer','C) Transport layer
+      ,'B)  Network layer','C) Transport layer'
       ,'D)  Session layer' ],
     [  'A) To manage hardware devices and data transmission across physical media'
       ,'B)  To provide reliable transfer of data between applications','C) To route packets across networks based on IP addresses
