@@ -6,15 +6,10 @@ import { questions } from './setq1';
  import { options } from './setop1';
 import { useState } from 'react';
 let d=0;
-// let fr=0;
-// let setq1=[]
-// let ans =1,ans1=1,ans2=1,ans3=1,ans4=1,ans5=1,ans6=1,ans7=1,ans8=1,ans9=1,ans10=1,ans11=1,ans12=1,ans13=1,ans14=1,ans15=1,ans16=1,ans17=1,ans18=1,ans19=1;
-// let bns1=1,bns2=1,bns3=1,bns4=1,bns5=1,bns6=1,bns7=1,bns8=1,bns9=1,bns10=1,bns11=1,bns12=1,bns13=1,bns14=1,bns15=1,bns16=1,bns17=1,bns18=1,bns19=1,bns20=1,bns21=1;
-// let cns1=1,cns2=1,cns3=1,cns4=1,cns5=1,cns6=1,cns7=1,cns8=1,cns9=1,cns10=1;
-// let dns1=1,dns2=1,dns3=1,dns4=1,dns5=1,dns6=1,dns7=1,dns8=1,dns9=1,dns10=1,dns11=1,dns12=1,dns13=1,dns14=1,dns15=1,dns16=1,dns17=1,dns18=1,dns19=1,dns20=1,dns21=1,dns22=1,
-// dns23=1,dns24=1,dns25=1,dns26=1,dns27=1,dns28=1,dns29=1,dns30=1,dns31=1,dns32=1,dns33=1,dns34=1,dns35=1,dns36=1,dns37=1,dns38=1,dns39=1,dns40=1,dns41=1,dns42=1,dns43=1,dns44=1,dns45=1,
-// dns46=1,dns47=1,dns48=1;
-// let ua={};
+let fr=0;
+let setq1=[]
+
+let ua={};
 let q1=[],q2=[],q3=[],q4=[];
 let a1=[],a2=[],a3=[],a4=[];
  function Qp(props) {
@@ -25,1065 +20,82 @@ let a1=[],a2=[],a3=[],a4=[];
   const [data, getdata]=useState(false)
   const [data1, getdata1]=useState(0)
   const [data2, getdata2]=useState(false)
-  // const [data3, getdata3]=useState(0)
+  const [data3, getdata3]=useState(0)
 
   const [op, setop]=useState(0);
   const [op2, setop2]=useState(0);
   const [op3, setop3]=useState(0);
   const [op4, setop4]=useState(0);
-  // const [name, setname]=useState(" ");
-  // const [result,setresult]=useState(0); 
+  const [name, setname]=useState(" ");
+  const [result,setresult]=useState(0); 
   
   const [c1, setc1]=useState(0);
-  // const [c2, setc2]=useState(0);
-  // const [c3, setc3]=useState(0);
-  // const [c4, setc4]=useState(0) ;
+  const [c2, setc2]=useState(0);
+  const [c3, setc3]=useState(0);
+  const [c4, setc4]=useState(0) ;
 
   function r1()
 {
   setc1(1);
-  console.log("r1");
+  // console.log("r1");
 
 }
 function r2()
 { 
   setc1(2);
-   console.log("r2");
+  //  console.log("r2");
   
   
 }
 function r3()
 {
   setc1(3);
-   console.log("r3")
+  //  console.log("r3")
   
 }
 function r4()
 {
   setc1(4);
  
-   console.log("r4")
+  //  console.log("r4")
 }
 
 function getResult()
 {
-  console.log("q1",q1,"a1",a1);
-  console.log("q2",q2,"a2",a2);
-  console.log("q3",q3,"a3",a3);
-  console.log("q4",q4,"a4",a4);
+  console.log("questions",q1);
+  // console.log("answers",a1,'...',a2,'...',a3,'...',a4);
+  
 }
 
 function getSave()
 {
   
-  // let g=parseInt(data1[1]);
-  // let g1=parseInt(data1.substring(1,3));
-  // let g2=parseInt(data1.substring(1,4));
-  if(c1===1)
+  let g=parseInt(data1[1]);
+  let g1=parseInt(data1.substring(1,3));
+  let g2=parseInt(data1.substring(1,4));
+  if(c1==1)
   {
     q1.push(data1);
-    a1.push(1);
-    console.log("q1",q1);
-    console.log("a1",a1);
-    
+    q1.push(c1)
   }
-  if(c1===2)
+  if(c1==2)
   {
-    q2.push(data1);
-    a2.push(2);
-    console.log("q2",q2);
-    console.log("a2",a2);
-    
-  }
-  if(c1===3)
-  {
-    q3.push(data1);
-    a3.push(3);
-    console.log("q3",q3);
-    console.log("a3",a3);
-    
-  }
-  if(c1===4)
-  {
-    q4.push(data1);
-    a4.push(4);
-    console.log("q4",q4);
-    console.log("a4",a4);
-   
-  }
-  // console.log("q1",q1);
-  // console.log("a1",a1);
-  // console.log("q2",q2);
-  // console.log("a2",a2);
-  // console.log("q3",q3);
-  // console.log("q4",q4);
-  // console.log("a4",a4);
-}
+    q1.push(data1);
+    q1.push(c1)
 
-
-// function getSave()
-// {let g=parseInt(data1[1]);
-//   let g1=parseInt(data1.substring(1,3));
-//   let g2=parseInt(data1.substring(1,4));
-//   console.log("qno",data1[1]);
-//   console.log("qnobada",g1);
-//   if(c1==1)
-//   {
-//     if(g==1 && ans ==1)
-//     {
-//      fr=fr+1;
-//      // console.log("s1",c1,data1[1],"...",data1);
-//      // {result=result+1;}
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans=ans+1;
-//      ua['1']=1;
-    
-//     }
-   
-//     if(g==4 && ans1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans1=ans1+1;
-//      ua['2']=2;
-    
-//     }
-//     if(parseInt(g1)==38 && ans2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans2=ans2+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==61 && ans3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans3=ans3+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==63 && ans4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans4=ans4+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==68 && ans5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans5=ans5+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==69 && ans6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans6=ans6+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==70 && ans7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans7=ans7+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==71 && ans8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans8=ans8+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==72 && ans9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans9=ans9+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==75 && ans10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans10=ans10+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==78 && ans11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans11=ans11+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==82 && ans12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans12=ans12+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==83 && ans13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans13=ans13+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==89 && ans14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans14=ans14+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==95 && ans15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans15=ans15+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==96 && ans16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans16=ans16+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g1)==98 && ans17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans17=ans17+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g1)==99 && ans17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans17=ans17+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g2)==100 && ans18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans18=ans18+1;
-//      ua['3']=4;
-    
-//     }
-//     console.log("s1",c1,data1);
-//   }
-   
-//   if(c2==2)
-//   {
-//     if(parseInt(g)==2 && bns1 ==1)
-//     {
-//       console.log("in 2",g);
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns1=bns1+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g)==3 && bns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns2=bns2+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g)==6 && bns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns3=bns3+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==10 && bns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns4=bns4+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==32 && bns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns5=bns5+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==33 && bns6==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns6=bns6+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==66 && bns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns7=bns7+1;
-//      ua['3']=4;
-    
-//     } 
-   
-//     if(parseInt(g1)==67 && bns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns8=bns8+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==77 && bns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns9=bns9+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==79 && bns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns10=bns10+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==81 && bns11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns11=bns11+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==84 && bns12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns12=bns12+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==87 && bns13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns13=bns13+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==88 && bns14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns14=bns14+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==90 && bns15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns15=bns15+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==91 && bns16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns16=bns16+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==92 && bns17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns17=bns17+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==93 && bns18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns18=bns18+1;
-//      ua['3']=4;
-    
-//     }  
-//     if(parseInt(g1)==97 && bns19 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns19=bns19+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==13 && bns20 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns20=bns20+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==19 && bns21 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns21=bns21+1;
-//      ua['3']=4;
-    
-//     } 
-//     console.log("s1",c2,data1);
-//   }
+  }
+  if(c1==3)
+  {
+    q1.push(data1);
+    q1.push(c1)
+  }
+  if(c1==4)
+  {
+    q1.push(data1);
+    q1.push(c1) 
+  }
   
-//   if(c3==3)
-//   {
-//     if(parseInt(g)==7 && cns1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns1=cns1+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g)==9 && cns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns2=cns2+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==55 && cns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns3=cns3+1;
-//      ua['3']=4;
-//     } 
-//     if(parseInt(g1)==73 && cns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns4=cns4+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==74 && cns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns5=cns5+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==76 && cns6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns6=cns6+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==85 && cns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns7=cns7+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==86 && cns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns8=cns8+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==94 && cns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns9=cns9+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==17 && cns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns10=cns10+1;
-//      ua['3']=4;
-//     }
-//     console.log("s1",c3,data1);
-//   }
-//   if(c4==4)
-//   {
-//     if(parseInt(g)==5 && dns1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns1=dns1+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g)==8 && dns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns2=dns2+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==11 && dns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns3=dns3+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==12 && dns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns4=dns4+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==14 && dns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns5=dns5+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==16 && dns6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns6=dns6+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==18 && dns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns7=dns7+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==20 && dns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns8=dns8+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==21 && dns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns9=dns9+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==22 && dns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns10=dns10+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==23 && dns11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns11=dns11+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==24 && dns12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns12=dns12+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==25 && dns13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns13=dns13+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==26 && dns14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns14=dns14+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==27 && dns15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns15=dns15+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==28 && dns16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns16=dns16+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==29 && dns18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns18=dns18+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==30 && dns19 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns19=dns19+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==31 && dns20 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns20=dns20+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==34 && dns21 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns21=dns21+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==35 && dns22 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns22=dns22+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==36 && dns23 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns23=dns23+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==37 && dns24 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns24=dns24+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==39 && dns25 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns25=dns25+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==40 && dns26 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns26=dns26+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==41 && dns27 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns27=dns27+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==42 && dns28 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns28=dns28+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==43 && dns29 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns29=dns29+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==44 && dns30 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns30=dns30+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==45 && dns31 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns31=dns31+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==46 && dns32 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns32=dns32+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==47 && dns33 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns33=dns33+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==48 && dns34 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns34=dns34+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==49 && dns35 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns35=dns35+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==50 && dns36 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns36=dns36+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==51 && dns37 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns37=dns37+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==52 && dns38 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns38=dns38+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==53 && dns39==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns39=dns39+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==54 && dns40==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns40=dns40+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==56 && dns41==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns41=dns41+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==57 && dns42 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns42=dns42+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==58 && dns43 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns43=dns43+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==59 && dns44 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns44=dns44+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==60 && dns45 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns45=dns45+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==62 && dns46 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns46=dns46+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==64 && dns47 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns47=dns47+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==65 && dns48 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns48=dns48+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==80 && dns17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns17=dns17+1;
-//      ua['3']=4;
-//     }
-// console.log("s1",c4,data1);
-//   }
-// }
-
+}
 function getQ(){
    let e=0;
  
@@ -1095,14 +107,12 @@ setop(options[d][0])
 setop2(options[d][(e+1)])
 setop3(options[d][(e+2)])
 setop4(options[d][(e+3)])
-console.log("q",d);
-// console.log("d",d,data,op,op2,op3,op4);
-// console.log("d..",options[d][d+3])
+
  d=d+1;
  e=e+1;
 }
 function getP(){
-  // let e=0;
+  let e=0;
   d=d-1;
 getdata(true);
 getdata1(questions[d]);
@@ -1116,23 +126,17 @@ setop4(options[d][3])
 
 
 React.useEffect(()=>{
-  // let e=0;
+  let e=0;
 
-  
-  // getdata2(true);
-  // getdata3(questions[d]);
-  // // getdata2(f[d]);
-  // setop11(options[0][0])
-  // setop12(options[0][(e+1)])
-  // setop13(options[0][(e+2)])
-  // setop14(options[0][(e+3)])
 get1();
 
-  // setname(localStorage.getItem("name"));
+
+
+  setname(localStorage.getItem("name"));
   // setresult(1);
-  // localStorage.setItem("result",result);
+  localStorage.setItem("result",result);
   
-},)
+},[1])
 
 function get1(){
   let e=0;
@@ -1745,7 +749,7 @@ setop2(options[(f[40])][(e+1)])
 setop3(options[(f[40])][(e+2)])
 setop4(options[(f[40])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3],data2);
+console.log("d..",options[d][d+3]);
 e=e+1;
 
 }
@@ -2634,10 +1638,10 @@ e=e+1;
 }
 
 
-// let date=new Date();
-// let dt=date.getDate();
-// let month=date.getMonth();
-// let year=date.getFullYear();
+let date=new Date();
+let dt=date.getDate();
+let month=date.getMonth();
+let year=date.getFullYear();
 // React.useEffect(
 //   {
 
@@ -2653,8 +1657,8 @@ e=e+1;
       <tr>
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
 Course on Computer Concepts (CCC) Exam<br/>
-{/* Name: {localStorage.getItem("name")} */}
-{/* {result} */}
+Name: {localStorage.getItem("name")}
+{result}
 </th>
 </tr>
 <tr>
@@ -2711,7 +1715,7 @@ Course on Computer Concepts (CCC) Exam<br/>
   <th colspan="2"></th>
 </tr>
 <tr>
-  <th>
+  <th colspan="1">
   <button style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getResult}>Submit</button>      
   </th>
 </tr>
@@ -2738,7 +1742,7 @@ Course on Computer Concepts (CCC) Exam<br/>
   <div class="column">
     <table border="0" style={{width:400,marginLeft:180}}>
       <tr>
-        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:0,width:440,height:40,fontSize:'12pt'}}>Hit the number to navigate the Question</button></th>
+        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:0,width:440,height:30,fontSize:'12pt'}}>Hit the number to navigate the Question</button></th>
       </tr>
       <tr>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get1}>1</button></th>
