@@ -2,19 +2,21 @@ import * as React from 'react';
 import { sendq } from '../actions/sendquestion';
 import { connect } from 'react-redux';
 import qreducer from '../reducers/qreducer';
-import { questions } from './q';
- import { options } from './opt';
+import { questions } from './setq1';
+ import { options } from './setop1';
 import { useState } from 'react';
 let d=0;
-let fr=0;
-let q=[]
-let ans =1,ans1=1,ans2=1,ans3=1,ans4=1,ans5=1,ans6=1,ans7=1,ans8=1,ans9=1,ans10=1,ans11=1,ans12=1,ans13=1,ans14=1,ans15=1,ans16=1,ans17=1,ans18=1,ans19=1;
-let bns1=1,bns2=1,bns3=1,bns4=1,bns5=1,bns6=1,bns7=1,bns8=1,bns9=1,bns10=1,bns11=1,bns12=1,bns13=1,bns14=1,bns15=1,bns16=1,bns17=1,bns18=1,bns19=1,bns20=1,bns21=1;
-let cns1=1,cns2=1,cns3=1,cns4=1,cns5=1,cns6=1,cns7=1,cns8=1,cns9=1,cns10=1;
-let dns1=1,dns2=1,dns3=1,dns4=1,dns5=1,dns6=1,dns7=1,dns8=1,dns9=1,dns10=1,dns11=1,dns12=1,dns13=1,dns14=1,dns15=1,dns16=1,dns17=1,dns18=1,dns19=1,dns20=1,dns21=1,dns22=1,
-dns23=1,dns24=1,dns25=1,dns26=1,dns27=1,dns28=1,dns29=1,dns30=1,dns31=1,dns32=1,dns33=1,dns34=1,dns35=1,dns36=1,dns37=1,dns38=1,dns39=1,dns40=1,dns41=1,dns42=1,dns43=1,dns44=1,dns45=1,
-dns46=1,dns47=1,dns48=1;
-let ua={};
+// let fr=0;
+// let setq1=[]
+// let ans =1,ans1=1,ans2=1,ans3=1,ans4=1,ans5=1,ans6=1,ans7=1,ans8=1,ans9=1,ans10=1,ans11=1,ans12=1,ans13=1,ans14=1,ans15=1,ans16=1,ans17=1,ans18=1,ans19=1;
+// let bns1=1,bns2=1,bns3=1,bns4=1,bns5=1,bns6=1,bns7=1,bns8=1,bns9=1,bns10=1,bns11=1,bns12=1,bns13=1,bns14=1,bns15=1,bns16=1,bns17=1,bns18=1,bns19=1,bns20=1,bns21=1;
+// let cns1=1,cns2=1,cns3=1,cns4=1,cns5=1,cns6=1,cns7=1,cns8=1,cns9=1,cns10=1;
+// let dns1=1,dns2=1,dns3=1,dns4=1,dns5=1,dns6=1,dns7=1,dns8=1,dns9=1,dns10=1,dns11=1,dns12=1,dns13=1,dns14=1,dns15=1,dns16=1,dns17=1,dns18=1,dns19=1,dns20=1,dns21=1,dns22=1,
+// dns23=1,dns24=1,dns25=1,dns26=1,dns27=1,dns28=1,dns29=1,dns30=1,dns31=1,dns32=1,dns33=1,dns34=1,dns35=1,dns36=1,dns37=1,dns38=1,dns39=1,dns40=1,dns41=1,dns42=1,dns43=1,dns44=1,dns45=1,
+// dns46=1,dns47=1,dns48=1;
+// let ua={};
+let q1=[],q2=[],q3=[],q4=[];
+let a1=[],a2=[],a3=[],a4=[];
  function Qp(props) {
  let f=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
@@ -23,63 +25,102 @@ let ua={};
   const [data, getdata]=useState(false)
   const [data1, getdata1]=useState(0)
   const [data2, getdata2]=useState(false)
-  const [data3, getdata3]=useState(0)
+  // const [data3, getdata3]=useState(0)
 
   const [op, setop]=useState(0);
   const [op2, setop2]=useState(0);
   const [op3, setop3]=useState(0);
   const [op4, setop4]=useState(0);
-  const [name, setname]=useState(" ");
-  const [result,setresult]=useState(0); 
+  // const [name, setname]=useState(" ");
+  // const [result,setresult]=useState(0); 
   
   const [c1, setc1]=useState(0);
-  const [c2, setc2]=useState(0);
-  const [c3, setc3]=useState(0);
-  const [c4, setc4]=useState() ;
+  // const [c2, setc2]=useState(0);
+  // const [c3, setc3]=useState(0);
+  // const [c4, setc4]=useState(0) ;
 
-  function r1(z)
+  function r1()
 {
-  console.log("...",z);
-  if(z==1)
-  {
-      setc1(1);
-      console.log("first click",{c1})
-  }
-  else if(z==2)
-  {
-    setc1(2);
-  console.log("second click",{c1})
-  }
-  else if(z==3)
-  {
-    setc1(3);
-  console.log("third click",{c1})
-  }
-  else if(z==4)
-  {
-    setc1(4);
-  console.log("fourth click",{c1})
-  }
+  setc1(1);
+  console.log("r1");
 
 }
 function r2()
 { 
-  setc2(2);
+  setc1(2);
+   console.log("r2");
   
-  console.log('clicked',c2);
+  
 }
 function r3()
 {
-  setc3(3);
+  setc1(3);
+   console.log("r3")
   
-  console.log('clicked',c3);
 }
 function r4()
 {
-  setc4(4);
+  setc1(4);
  
-  console.log('clicked',c4);
+   console.log("r4")
 }
+
+function getResult()
+{
+  console.log("q1",q1,"a1",a1);
+  console.log("q2",q2,"a2",a2);
+  console.log("q3",q3,"a3",a3);
+  console.log("q4",q4,"a4",a4);
+}
+
+function getSave()
+{
+  
+  // let g=parseInt(data1[1]);
+  // let g1=parseInt(data1.substring(1,3));
+  // let g2=parseInt(data1.substring(1,4));
+  if(c1===1)
+  {
+    q1.push(data1);
+    a1.push(1);
+    console.log("q1",q1);
+    console.log("a1",a1);
+    
+  }
+  if(c1===2)
+  {
+    q2.push(data1);
+    a2.push(2);
+    console.log("q2",q2);
+    console.log("a2",a2);
+    
+  }
+  if(c1===3)
+  {
+    q3.push(data1);
+    a3.push(3);
+    console.log("q3",q3);
+    console.log("a3",a3);
+    
+  }
+  if(c1===4)
+  {
+    q4.push(data1);
+    a4.push(4);
+    console.log("q4",q4);
+    console.log("a4",a4);
+   
+  }
+  // console.log("q1",q1);
+  // console.log("a1",a1);
+  // console.log("q2",q2);
+  // console.log("a2",a2);
+  // console.log("q3",q3);
+  // console.log("q4",q4);
+  // console.log("a4",a4);
+}
+
+
 // function getSave()
 // {let g=parseInt(data1[1]);
 //   let g1=parseInt(data1.substring(1,3));
@@ -1042,10 +1083,7 @@ function r4()
 // console.log("s1",c4,data1);
 //   }
 // }
-function getSave()
-{
 
-}
 function getQ(){
    let e=0;
  
@@ -1064,7 +1102,7 @@ console.log("q",d);
  e=e+1;
 }
 function getP(){
-  let e=0;
+  // let e=0;
   d=d-1;
 getdata(true);
 getdata1(questions[d]);
@@ -1078,7 +1116,7 @@ setop4(options[d][3])
 
 
 React.useEffect(()=>{
-  let e=0;
+  // let e=0;
 
   
   // getdata2(true);
@@ -1090,13 +1128,11 @@ React.useEffect(()=>{
   // setop14(options[0][(e+3)])
 get1();
 
-
-
-  setname(localStorage.getItem("name"));
+  // setname(localStorage.getItem("name"));
   // setresult(1);
-  localStorage.setItem("result",result);
+  // localStorage.setItem("result",result);
   
-},[1])
+},)
 
 function get1(){
   let e=0;
@@ -1709,7 +1745,7 @@ setop2(options[(f[40])][(e+1)])
 setop3(options[(f[40])][(e+2)])
 setop4(options[(f[40])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+console.log("d..",options[d][d+3],data2);
 e=e+1;
 
 }
@@ -2598,10 +2634,10 @@ e=e+1;
 }
 
 
-let date=new Date();
-let dt=date.getDate();
-let month=date.getMonth();
-let year=date.getFullYear();
+// let date=new Date();
+// let dt=date.getDate();
+// let month=date.getMonth();
+// let year=date.getFullYear();
 // React.useEffect(
 //   {
 
@@ -2617,8 +2653,8 @@ let year=date.getFullYear();
       <tr>
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
 Course on Computer Concepts (CCC) Exam<br/>
-Name: {localStorage.getItem("name")}
-{result}
+{/* Name: {localStorage.getItem("name")} */}
+{/* {result} */}
 </th>
 </tr>
 <tr>
@@ -2630,21 +2666,21 @@ Name: {localStorage.getItem("name")}
 <tr>
 </tr>
       <tr>
-        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1(1)}/>
+        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
 {data && op}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r1(2)}/>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r2}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op2}
 </th>
       </tr>
       <tr>
-        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r1(3)} />
+        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r3} />
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op3}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r1(4)}/>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r4}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op4}
 </th>
@@ -2666,15 +2702,18 @@ Name: {localStorage.getItem("name")}
           <br/>
           <br/>
         </th>
+        
         <th>
 <button type="button" class="btn btn-success"  style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getSave} >Save</button>      
-        </th>
+        </th>        
       </tr>
 <tr rowspan="4">
   <th colspan="2"></th>
 </tr>
 <tr>
-  <th colspan="2"></th>
+  <th>
+  <button style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getResult}>Submit</button>      
+  </th>
 </tr>
 <tr>
 <th colspan="2"></th>
@@ -2699,7 +2738,7 @@ Name: {localStorage.getItem("name")}
   <div class="column">
     <table border="0" style={{width:400,marginLeft:180}}>
       <tr>
-        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:23}}>Hit the number to navigate the Question</button></th>
+        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:0,width:440,height:40,fontSize:'12pt'}}>Hit the number to navigate the Question</button></th>
       </tr>
       <tr>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get1}>1</button></th>

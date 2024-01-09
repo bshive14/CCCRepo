@@ -4,8 +4,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Quiz from '../Quiz';
-import CCCQuizMod from '../CCCQuiz';
+// import Quiz from '../Quiz';
+// import CCCQuizMod from '../CCCQuiz';
 import CCCQuiz from '../CCCQuiz';
 const style = {
     position: 'absolute',
@@ -20,20 +20,20 @@ const style = {
   };
   
 export default function CCCmod() {
-  let textInput=React.createRef();
+  // let textInput=React.createRef();
     const [g,setg]=React.useState(false);
     const [open, setOpen] = React.useState(false);
 //   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [name, setName] = React.useState(" ");
-  const [phone, setPhone] = React.useState("");
+  // const [phone, setPhone] = React.useState("");
     function Handler(){
         setg(true);
       setOpen(true);
     
     }
     const [open1, setOpen1] = React.useState(false);
-      const handleClose1 = () => setOpen1(false);
+      // const handleClose1 = () => setOpen1(false);
     
     
         function Handler1(e){
@@ -41,11 +41,11 @@ export default function CCCmod() {
           setOpen1(true);
         let t=document.getElementById("bt1");
         t.style.display='none';
-        let elm=document.getElementById("nm");
+        // let elm=document.getElementById("nm");
         console.log(name);
         localStorage.setItem("name",e.target.value);
         console.log("local",localStorage.getItem("name"));
-        let ph1=document.getElementById('ph');
+        // let ph1=document.getElementById('ph');
         // setName(nm1);
 
         // setPhone(ph1);
