@@ -2,29 +2,42 @@ import * as React from 'react';
 import { sendq } from '../actions/sendquestion';
 import { connect } from 'react-redux';
 import qreducer from '../reducers/qreducer';
-import { questions } from './q';
- import { options } from './opt';
+import { questions } from './setq1';
+ import { options } from './setop1';
 import { useState } from 'react';
+import FinalMod from './FinalMod';
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 let d=0;
 let fr=0;
-let q=[]
-let ans =1,ans1=1,ans2=1,ans3=1,ans4=1,ans5=1,ans6=1,ans7=1,ans8=1,ans9=1,ans10=1,ans11=1,ans12=1,ans13=1,ans14=1,ans15=1,ans16=1,ans17=1,ans18=1,ans19=1;
-let bns1=1,bns2=1,bns3=1,bns4=1,bns5=1,bns6=1,bns7=1,bns8=1,bns9=1,bns10=1,bns11=1,bns12=1,bns13=1,bns14=1,bns15=1,bns16=1,bns17=1,bns18=1,bns19=1,bns20=1,bns21=1;
-let cns1=1,cns2=1,cns3=1,cns4=1,cns5=1,cns6=1,cns7=1,cns8=1,cns9=1,cns10=1;
-let dns1=1,dns2=1,dns3=1,dns4=1,dns5=1,dns6=1,dns7=1,dns8=1,dns9=1,dns10=1,dns11=1,dns12=1,dns13=1,dns14=1,dns15=1,dns16=1,dns17=1,dns18=1,dns19=1,dns20=1,dns21=1,dns22=1,
-dns23=1,dns24=1,dns25=1,dns26=1,dns27=1,dns28=1,dns29=1,dns30=1,dns31=1,dns32=1,dns33=1,dns34=1,dns35=1,dns36=1,dns37=1,dns38=1,dns39=1,dns40=1,dns41=1,dns42=1,dns43=1,dns44=1,dns45=1,
-dns46=1,dns47=1,dns48=1;
+let setq1=[]
+let h=0,h1=0;
 let ua={};
- function Qp(props) {
+let q1=[],q2=[],q3=[],q4=[],q5=[],q6=[];
+let a1=[],a2=[],a3=[],a4=[],a5=[],a6=[];
+let m=new Map();
+ export default function Qp(props) {
  let f=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
  ];
-
+ let f1=false;
+ const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
   const [data, getdata]=useState(false)
   const [data1, getdata1]=useState(0)
-  const [data2, getdata2]=useState(false)
+  const [data2, getdata2]=useState(f1)
   const [data3, getdata3]=useState(0)
 
+  const [data5, getdata5]=useState(false)
   const [op, setop]=useState(0);
   const [op2, setop2]=useState(0);
   const [op3, setop3]=useState(0);
@@ -35,1016 +48,272 @@ let ua={};
   const [c1, setc1]=useState(0);
   const [c2, setc2]=useState(0);
   const [c3, setc3]=useState(0);
-  const [c4, setc4]=useState() ;
+  const [c4, setc4]=useState(0) ;
 
-  function r1(z)
+  function r1()
 {
-  console.log("...",z);
-  if(z==1)
-  {
-      setc1(1);
-      console.log("first click",{c1})
-  }
-  else if(z==2)
-  {
-    setc1(2);
-  console.log("second click",{c1})
-  }
-  else if(z==3)
-  {
-    setc1(3);
-  console.log("third click",{c1})
-  }
-  else if(z==4)
-  {
-    setc1(4);
-  console.log("fourth click",{c1})
-  }
+  setc1(1);
+  // console.log("r1");
 
 }
 function r2()
 { 
-  setc2(2);
+  setc1(2);
+  //  console.log("r2");
   
-  console.log('clicked',c2);
+  
 }
 function r3()
 {
-  setc3(3);
+  setc1(3);
+  //  console.log("r3")
   
-  console.log('clicked',c3);
 }
 function r4()
 {
-  setc4(4);
+  setc1(4);
  
-  console.log('clicked',c4);
+  //  console.log("r4")
 }
-// function getSave()
-// {let g=parseInt(data1[1]);
-//   let g1=parseInt(data1.substring(1,3));
-//   let g2=parseInt(data1.substring(1,4));
-//   console.log("qno",data1[1]);
-//   console.log("qnobada",g1);
-//   if(c1==1)
-//   {
-//     if(g==1 && ans ==1)
-//     {
-//      fr=fr+1;
-//      // console.log("s1",c1,data1[1],"...",data1);
-//      // {result=result+1;}
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans=ans+1;
-//      ua['1']=1;
+
+
+function getResult()
+{
+  let i;
+ getdata5(true);
+  let r="abc";
+  let t="";
+let n="";
+let m1="";
+
+
+let v=new Map();
+let w=new Map();
+let fir=0;
+let fir1=0;
+let fir3=0;
+let correct;
+let incorrect;
+
+for(i=0;i<q1.length-1;i++)
+{
+    if(typeof(q1[i])==typeof(r))
+    {
+ q1[i]=q1[i].replace("Q","");
+// console.log(q1[i]);
+ if(parseInt(q1[i].substring(0,1))<10 &&(q1[i].substring(1,2)==")") )
+ {
     
-//     }
-   
-//     if(g==4 && ans1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans1=ans1+1;
-//      ua['2']=2;
+      m.set(q1[i],q1[i+1]) ;
     
-//     }
-//     if(parseInt(g1)==38 && ans2 ==1)
-//     {
-//      fr=fr+1;
+ }
+
+}
+
+}
+// console.log("1 to 9",m);
+let k=m.keys();
+let fm1=new Map();
+for(const [keys,value] of m)
+{
+  let s=keys[0];
+  fm1.set(s,value);
+  a1[h]=s;
+  a2[h]=value;
+  h=h+1;
+  //console.log(s);
+}
+console.log("...1",fm1);
+for(i=0;i<q1.length-1;i++)
+{
+    if(typeof(q1[i])==typeof(r))
+    {
+
+        if(parseInt(q1[i].substring(1,2))<99 &&(q1[i].substring(2,3)==")") )
+        {
+            // console.log(q1[i]);
+              v.set(q1[i],q1[i+1]) ;
+              
+        }
+
+    }
+}
+console.log("kk",a1);
+localStorage.setItem("q",a1);
+localStorage.setItem("q2",a2);
+let k1=v.keys();
+let fm2=new Map();
+for(const [keys,value] of v)
+{
+  let s1=keys[0];
+  let s2=keys[1];
+  fm2.set((s1+s2),value);
+  a3[h1]=parseInt((s1+s2));
+  a4[h1]=value;
+  h1=h1+1;
+  //console.log(s1);
+}
+localStorage.setItem("a3",a3);
+localStorage.setItem("a4",a4);
+
+console.log("...2",fm2);
+// console.log("10 to 99",v);
+
+for(i=0;i<q1.length-1;i++)
+{
+    if(typeof(q1[i])==typeof(r))
+    {
+
+        if(parseInt(q1[i].substring(0,1))<9 &&(q1[i].substring(3,4)==")") )
+        {
+          
+              w.set(q1[i],q1[i+1]) ;
+        }
+      }
+
+
+}
+let k3=w.keys();
+let fm3=new Map();
+for(const [keys,value] of w)
+{
+  let s1=keys[0];
+  let s2=keys[1];
+  let s3=keys[2];
+  fm3.set((s1+s2+s3),value);
+  a5[h1]=parseInt((s2+s3));
+  a6[h1]=value;
+  h1=h1+1;
+}
+localStorage.setItem("a5",a5);
+localStorage.setItem("a6",a6);
+// console.log(s1);
+// console.log("...3",fm3);
+// console.log("100",w);
+
+for(const [key, value] of fm1)
+{
+  if(key==1||key==4)
+  {
+    if(value==1)
+      {
+        fir=fir+1;
+      }
+  }
+
+  if(key==2||key==3||key==6)
+  {
+      if(value==2)
+        {
+          fir=fir+1;
+        }
+  }
+
+  if(key==7||key==9)
+  {
+    if(value==3)
+    {
+      fir=fir+1;
+    }
+  }
+
+  if(key==5||key==8)
+  {
+    if(value==4)
+    {
+fir=fir+1;
+    }
+  }
+  console.log('fir1',fir)
+  // console.log('fm2',fm2)
+}
+  for(const [key, value] of fm2)
+  {
+    if(key==38||key==61||key==63||key==68||key==69||key==70||key==71||key==72||key==75||key==78||key==82||key==83||key==89||key==95||key==96||key==98||key==99||key==100)
+    {
+      if(value==1)
+      {
+        fir1=fir1+1;
+        console.log("dusra",fir1);
    
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans2=ans2+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==61 && ans3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans3=ans3+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==63 && ans4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans4=ans4+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==68 && ans5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans5=ans5+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==69 && ans6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans6=ans6+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==70 && ans7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans7=ans7+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==71 && ans8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans8=ans8+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==72 && ans9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans9=ans9+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==75 && ans10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans10=ans10+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==78 && ans11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans11=ans11+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==82 && ans12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans12=ans12+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==83 && ans13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans13=ans13+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==89 && ans14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans14=ans14+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==95 && ans15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans15=ans15+1;
-//      ua['3']=4;
-    
-//     }
-//         if(parseInt(g1)==96 && ans16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans16=ans16+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g1)==98 && ans17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans17=ans17+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g1)==99 && ans17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans17=ans17+1;
-//      ua['3']=4;
-    
-//     }
-//       if(parseInt(g2)==100 && ans18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      ans18=ans18+1;
-//      ua['3']=4;
-    
-//     }
-//     console.log("s1",c1,data1);
-//   }
-   
-//   if(c2==2)
-//   {
-//     if(parseInt(g)==2 && bns1 ==1)
-//     {
-//       console.log("in 2",g);
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns1=bns1+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g)==3 && bns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns2=bns2+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g)==6 && bns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns3=bns3+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==10 && bns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns4=bns4+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==32 && bns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns5=bns5+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==33 && bns6==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns6=bns6+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==66 && bns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns7=bns7+1;
-//      ua['3']=4;
-    
-//     } 
-   
-//     if(parseInt(g1)==67 && bns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns8=bns8+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==77 && bns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns9=bns9+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==79 && bns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns10=bns10+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==81 && bns11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns11=bns11+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==84 && bns12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns12=bns12+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==87 && bns13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns13=bns13+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==88 && bns14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns14=bns14+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==90 && bns15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns15=bns15+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==91 && bns16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns16=bns16+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==92 && bns17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns17=bns17+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g1)==93 && bns18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns18=bns18+1;
-//      ua['3']=4;
-    
-//     }  
-//     if(parseInt(g1)==97 && bns19 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns19=bns19+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==13 && bns20 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns20=bns20+1;
-//      ua['3']=4;
-    
-//     } 
-//     if(parseInt(g1)==19 && bns21 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      bns21=bns21+1;
-//      ua['3']=4;
-    
-//     } 
-//     console.log("s1",c2,data1);
-//   }
+      }
+    }
   
-//   if(c3==3)
-//   {
-//     if(parseInt(g)==7 && cns1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns1=cns1+1;
-//      ua['3']=4;
-    
-//     }
-//     if(parseInt(g)==9 && cns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns2=cns2+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==55 && cns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns3=cns3+1;
-//      ua['3']=4;
-//     } 
-//     if(parseInt(g1)==73 && cns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns4=cns4+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==74 && cns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns5=cns5+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==76 && cns6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns6=cns6+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==85 && cns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns7=cns7+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==86 && cns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns8=cns8+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==94 && cns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns9=cns9+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==17 && cns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      cns10=cns10+1;
-//      ua['3']=4;
-//     }
-//     console.log("s1",c3,data1);
-//   }
-//   if(c4==4)
-//   {
-//     if(parseInt(g)==5 && dns1 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns1=dns1+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g)==8 && dns2 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns2=dns2+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==11 && dns3 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns3=dns3+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==12 && dns4 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns4=dns4+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==14 && dns5 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns5=dns5+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==16 && dns6 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns6=dns6+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==18 && dns7 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns7=dns7+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==20 && dns8 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns8=dns8+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==21 && dns9 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns9=dns9+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==22 && dns10 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns10=dns10+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==23 && dns11 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns11=dns11+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==24 && dns12 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns12=dns12+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==25 && dns13 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns13=dns13+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==26 && dns14 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns14=dns14+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==27 && dns15 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns15=dns15+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==28 && dns16 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns16=dns16+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==29 && dns18 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns18=dns18+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==30 && dns19 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns19=dns19+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==31 && dns20 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns20=dns20+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==34 && dns21 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns21=dns21+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==35 && dns22 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns22=dns22+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==36 && dns23 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns23=dns23+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==37 && dns24 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns24=dns24+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==39 && dns25 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns25=dns25+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==40 && dns26 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns26=dns26+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==41 && dns27 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns27=dns27+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==42 && dns28 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns28=dns28+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==43 && dns29 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns29=dns29+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==44 && dns30 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns30=dns30+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==45 && dns31 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns31=dns31+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==46 && dns32 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns32=dns32+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==47 && dns33 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns33=dns33+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==48 && dns34 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns34=dns34+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==49 && dns35 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns35=dns35+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==50 && dns36 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns36=dns36+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==51 && dns37 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns37=dns37+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==52 && dns38 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns38=dns38+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==53 && dns39==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns39=dns39+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==54 && dns40==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns40=dns40+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==56 && dns41==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns41=dns41+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==57 && dns42 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns42=dns42+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==58 && dns43 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns43=dns43+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==59 && dns44 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns44=dns44+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==60 && dns45 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns45=dns45+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==62 && dns46 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns46=dns46+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==64 && dns47 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns47=dns47+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==65 && dns48 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns48=dns48+1;
-//      ua['3']=4;
-//     }
-//     if(parseInt(g1)==80 && dns17 ==1)
-//     {
-//      fr=fr+1;
-   
-//      setresult(fr);
-//      console.log("s1",result);
-//      dns17=dns17+1;
-//      ua['3']=4;
-//     }
-// console.log("s1",c4,data1);
-//   }
-// }
+    if(key==10||key==32||key==33||key==66||key==67||key==77||key==79||key==81||key==84||key==87||key==88||key==90||key==91||key==92||key==97||key==93||key==13||key==19)
+    {
+      if(value==2)
+      {
+        fir1=fir1+1;
+      }
+    }
+  
+    if(key==17||key==55||key==73||key==74||key==76||key==85||key==86||key==94)
+    {
+      if(value==3)
+      {
+        fir1=fir1+1;
+      }
+    }
+  
+    if(key==11||key==34||key==35||key==36||key==37||key==39||key==40||key==41||key==42||key==44||key==43||key==45||key==46||key==47||key==48||key==49||key==50||key==51||key==52||key==55||key==56||key==57||key==58||key==59||key==60||key==62||key==64||key==65||key==80||key==12||key==14||key==16||key==18||key==20||key==21||key==22||key==23||key==24||key==25||key==26||key==27||key==28||key==29||key==30||key==31||key==94)
+    {
+      if(value==4)
+      {
+        fir1=fir1+1;
+      }
+    }
+    // console.log('fir2',fir)
+  }
+  for(const [key, value] of fm3)
+  {
+if(key==100 && value==1)
+{
+  fir3=fir3+1;
+}
+
+  }
+correct=fir1+fir+fir3;
+incorrect=100-correct;
+console.log('Correct Ans',(correct));
+console.log('Incorrect Ans',incorrect);
+console.log("m",m);
+
+  localStorage.setItem("v",v);
+  localStorage.setItem("w",w);
+  localStorage.setItem("fm1",fm1);
+  localStorage.setItem("fm2",fm2);
+  localStorage.setItem("fm3",fm3);
+  localStorage.setItem("cr",correct);
+}
+
 function getSave()
 {
+  
+  let g=parseInt(data1[1]);
+  let g1=parseInt(data1.substring(1,3));
+  let g2=parseInt(data1.substring(1,4));
+  if(c1==1)
+  {
+    q1.push(data1);
+    q1.push(c1)
+  }
+  if(c1==2)
+  {
+    q1.push(data1);
+    q1.push(c1)
 
+  }
+  if(c1==3)
+  {
+    q1.push(data1);
+    q1.push(c1)
+  }
+  if(c1==4)
+  {
+    q1.push(data1);
+    q1.push(c1) 
+  }
+  
 }
 function getQ(){
    let e=0;
@@ -1057,9 +326,7 @@ setop(options[d][0])
 setop2(options[d][(e+1)])
 setop3(options[d][(e+2)])
 setop4(options[d][(e+3)])
-console.log("q",d);
-// console.log("d",d,data,op,op2,op3,op4);
-// console.log("d..",options[d][d+3])
+console.log(d);
  d=d+1;
  e=e+1;
 }
@@ -1078,19 +345,10 @@ setop4(options[d][3])
 
 
 React.useEffect(()=>{
+  
   let e=0;
 
-  
-  // getdata2(true);
-  // getdata3(questions[d]);
-  // // getdata2(f[d]);
-  // setop11(options[0][0])
-  // setop12(options[0][(e+1)])
-  // setop13(options[0][(e+2)])
-  // setop14(options[0][(e+3)])
 get1();
-
-
 
   setname(localStorage.getItem("name"));
   // setresult(1);
@@ -1110,7 +368,7 @@ setop2(options[0][(e+1)])
 setop3(options[0][(e+2)])
 setop4(options[0][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+// 
 e=e+1;
 
 }
@@ -1126,7 +384,7 @@ setop2(options[1][(e+1)])
 setop3(options[1][(e+2)])
 setop4(options[1][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1141,7 +399,7 @@ setop2(options[2][(e+1)])
 setop3(options[2][(e+2)])
 setop4(options[2][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1156,7 +414,7 @@ setop2(options[3][(e+1)])
 setop3(options[3][(e+2)])
 setop4(options[3][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1171,7 +429,7 @@ setop2(options[(f[4])][(e+1)])
 setop3(options[(f[4])][(e+2)])
 setop4(options[(f[4])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1186,7 +444,7 @@ setop2(options[(f[5])][(e+1)])
 setop3(options[(f[5])][(e+2)])
 setop4(options[(f[5])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1201,7 +459,7 @@ setop2(options[(f[6])][(e+1)])
 setop3(options[(f[6])][(e+2)])
 setop4(options[(f[6])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1216,7 +474,7 @@ setop2(options[(f[7])][(e+1)])
 setop3(options[(f[7])][(e+2)])
 setop4(options[(f[7])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1231,7 +489,7 @@ setop2(options[(f[8])][(e+1)])
 setop3(options[(f[8])][(e+2)])
 setop4(options[(f[8])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1246,7 +504,7 @@ setop2(options[(f[9])][(e+1)])
 setop3(options[(f[9])][(e+2)])
 setop4(options[(f[9])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1261,7 +519,7 @@ setop2(options[(f[10])][(e+1)])
 setop3(options[(f[10])][(e+2)])
 setop4(options[(f[10])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1276,7 +534,7 @@ setop2(options[(f[11])][(e+1)])
 setop3(options[(f[11])][(e+2)])
 setop4(options[(f[11])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1291,7 +549,7 @@ setop2(options[(f[12])][(e+1)])
 setop3(options[(f[12])][(e+2)])
 setop4(options[(f[12])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1306,7 +564,7 @@ setop2(options[(f[13])][(e+1)])
 setop3(options[(f[13])][(e+2)])
 setop4(options[(f[13])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1321,7 +579,7 @@ setop2(options[(f[14])][(e+1)])
 setop3(options[(f[14])][(e+2)])
 setop4(options[(f[14])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1336,7 +594,7 @@ setop2(options[(f[15])][(e+1)])
 setop3(options[(f[15])][(e+2)])
 setop4(options[(f[15])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1351,7 +609,7 @@ setop2(options[(f[16])][(e+1)])
 setop3(options[(f[16])][(e+2)])
 setop4(options[(f[16])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1366,7 +624,7 @@ setop2(options[(f[17])][(e+1)])
 setop3(options[(f[17])][(e+2)])
 setop4(options[(f[17])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 }
 function get19(){
@@ -1380,7 +638,7 @@ setop2(options[(f[18])][(e+1)])
 setop3(options[(f[18])][(e+2)])
 setop4(options[(f[18])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1395,7 +653,7 @@ setop2(options[(f[19])][(e+1)])
 setop3(options[(f[19])][(e+2)])
 setop4(options[(f[19])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1410,7 +668,7 @@ setop2(options[(f[20])][(e+1)])
 setop3(options[(f[20])][(e+2)])
 setop4(options[(f[20])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1425,7 +683,7 @@ setop2(options[(f[21])][(e+1)])
 setop3(options[(f[21])][(e+2)])
 setop4(options[(f[21])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1440,7 +698,7 @@ setop2(options[(f[22])][(e+1)])
 setop3(options[(f[22])][(e+2)])
 setop4(options[(f[22])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1455,7 +713,7 @@ setop2(options[(f[23])][(e+1)])
 setop3(options[(f[23])][(e+2)])
 setop4(options[(f[23])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1470,7 +728,7 @@ setop2(options[(f[24])][(e+1)])
 setop3(options[(f[24])][(e+2)])
 setop4(options[(f[24])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1485,7 +743,7 @@ setop2(options[(f[25])][(e+1)])
 setop3(options[(f[25])][(e+2)])
 setop4(options[(f[25])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1500,7 +758,7 @@ setop2(options[(f[26])][(e+1)])
 setop3(options[(f[26])][(e+2)])
 setop4(options[(f[26])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1515,7 +773,7 @@ setop2(options[(f[27])][(e+1)])
 setop3(options[(f[27])][(e+2)])
 setop4(options[(f[27])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1530,7 +788,7 @@ setop2(options[(f[28])][(e+1)])
 setop3(options[(f[28])][(e+2)])
 setop4(options[(f[28])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1545,7 +803,7 @@ setop2(options[(f[29])][(e+1)])
 setop3(options[(f[29])][(e+2)])
 setop4(options[(f[29])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1560,7 +818,7 @@ setop2(options[(f[30])][(e+1)])
 setop3(options[(f[30])][(e+2)])
 setop4(options[(f[30])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1575,7 +833,7 @@ setop2(options[(f[31])][(e+1)])
 setop3(options[(f[31])][(e+2)])
 setop4(options[(f[31])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1590,7 +848,7 @@ setop2(options[(f[32])][(e+1)])
 setop3(options[(f[32])][(e+2)])
 setop4(options[(f[32])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1605,7 +863,7 @@ setop2(options[(f[33])][(e+1)])
 setop3(options[(f[33])][(e+2)])
 setop4(options[(f[33])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1620,7 +878,7 @@ setop2(options[(f[34])][(e+1)])
 setop3(options[(f[34])][(e+2)])
 setop4(options[(f[34])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1635,7 +893,7 @@ setop2(options[(f[35])][(e+1)])
 setop3(options[(f[35])][(e+2)])
 setop4(options[(f[35])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1650,7 +908,7 @@ setop2(options[(f[36])][(e+1)])
 setop3(options[(f[36])][(e+2)])
 setop4(options[(f[36])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1665,7 +923,7 @@ setop2(options[(f[37])][(e+1)])
 setop3(options[(f[37])][(e+2)])
 setop4(options[(f[37])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1680,7 +938,7 @@ setop2(options[(f[38])][(e+1)])
 setop3(options[(f[38])][(e+2)])
 setop4(options[(f[38])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 }
 function get40(){
@@ -1694,7 +952,7 @@ setop2(options[(f[39])][(e+1)])
 setop3(options[(f[39])][(e+2)])
 setop4(options[(f[39])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1709,7 +967,7 @@ setop2(options[(f[40])][(e+1)])
 setop3(options[(f[40])][(e+2)])
 setop4(options[(f[40])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1724,7 +982,7 @@ setop2(options[(f[41])][(e+1)])
 setop3(options[(f[41])][(e+2)])
 setop4(options[(f[41])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1739,7 +997,7 @@ setop2(options[(f[42])][(e+1)])
 setop3(options[(f[42])][(e+2)])
 setop4(options[(f[42])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1754,7 +1012,7 @@ setop2(options[(f[43])][(e+1)])
 setop3(options[(f[43])][(e+2)])
 setop4(options[(f[43])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1769,7 +1027,7 @@ setop2(options[(f[44])][(e+1)])
 setop3(options[(f[44])][(e+2)])
 setop4(options[(f[44])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1784,7 +1042,7 @@ setop2(options[(f[45])][(e+1)])
 setop3(options[(f[45])][(e+2)])
 setop4(options[(f[45])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1799,7 +1057,7 @@ setop2(options[(f[46])][(e+1)])
 setop3(options[(f[46])][(e+2)])
 setop4(options[(f[46])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1814,7 +1072,7 @@ setop2(options[(f[47])][(e+1)])
 setop3(options[(f[47])][(e+2)])
 setop4(options[(f[47])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1829,7 +1087,7 @@ setop2(options[(f[48])][(e+1)])
 setop3(options[(f[48])][(e+2)])
 setop4(options[(f[48])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1844,7 +1102,7 @@ setop2(options[(f[49])][(e+1)])
 setop3(options[(f[49])][(e+2)])
 setop4(options[(f[49])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1859,7 +1117,7 @@ setop2(options[(f[50])][(e+1)])
 setop3(options[(f[50])][(e+2)])
 setop4(options[(f[50])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1874,7 +1132,7 @@ setop2(options[(f[51])][(e+1)])
 setop3(options[(f[51])][(e+2)])
 setop4(options[(f[51])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1889,7 +1147,7 @@ setop2(options[(f[52])][(e+1)])
 setop3(options[(f[52])][(e+2)])
 setop4(options[(f[52])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1904,7 +1162,7 @@ setop2(options[(f[53])][(e+1)])
 setop3(options[(f[53])][(e+2)])
 setop4(options[(f[53])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1919,7 +1177,7 @@ setop2(options[(f[54])][(e+1)])
 setop3(options[(f[54])][(e+2)])
 setop4(options[(f[54])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1934,7 +1192,7 @@ setop2(options[(f[55])][(e+1)])
 setop3(options[(f[55])][(e+2)])
 setop4(options[(f[55])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1949,7 +1207,7 @@ setop2(options[(f[56])][(e+1)])
 setop3(options[(f[56])][(e+2)])
 setop4(options[(f[56])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1964,7 +1222,7 @@ setop2(options[(f[57])][(e+1)])
 setop3(options[(f[57])][(e+2)])
 setop4(options[(f[57])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1979,7 +1237,7 @@ setop2(options[(f[58])][(e+1)])
 setop3(options[(f[58])][(e+2)])
 setop4(options[(f[58])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -1994,7 +1252,7 @@ setop2(options[(f[59])][(e+1)])
 setop3(options[(f[59])][(e+2)])
 setop4(options[(f[59])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 }
 function get61(){
@@ -2008,7 +1266,7 @@ setop2(options[(f[60])][(e+1)])
 setop3(options[(f[60])][(e+2)])
 setop4(options[(f[60])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2023,7 +1281,7 @@ setop2(options[(f[61])][(e+1)])
 setop3(options[(f[61])][(e+2)])
 setop4(options[(f[61])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2038,7 +1296,7 @@ setop2(options[(f[62])][(e+1)])
 setop3(options[(f[62])][(e+2)])
 setop4(options[(f[62])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2053,7 +1311,7 @@ setop2(options[(f[63])][(e+1)])
 setop3(options[(f[63])][(e+2)])
 setop4(options[(f[63])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2068,7 +1326,7 @@ setop2(options[(f[64])][(e+1)])
 setop3(options[(f[64])][(e+2)])
 setop4(options[(f[64])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2083,7 +1341,7 @@ setop2(options[(f[65])][(e+1)])
 setop3(options[(f[65])][(e+2)])
 setop4(options[(f[65])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2098,7 +1356,7 @@ setop2(options[(f[66])][(e+1)])
 setop3(options[(f[66])][(e+2)])
 setop4(options[(f[66])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2113,7 +1371,7 @@ setop2(options[(f[67])][(e+1)])
 setop3(options[(f[67])][(e+2)])
 setop4(options[(f[67])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2128,7 +1386,7 @@ setop2(options[(f[68])][(e+1)])
 setop3(options[(f[68])][(e+2)])
 setop4(options[(f[68])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2143,7 +1401,7 @@ setop2(options[(f[69])][(e+1)])
 setop3(options[(f[69])][(e+2)])
 setop4(options[(f[69])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2158,7 +1416,7 @@ setop2(options[(f[70])][(e+1)])
 setop3(options[(f[70])][(e+2)])
 setop4(options[(f[70])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2173,7 +1431,7 @@ setop2(options[(f[71])][(e+1)])
 setop3(options[(f[71])][(e+2)])
 setop4(options[(f[71])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2188,7 +1446,7 @@ setop2(options[(f[72])][(e+1)])
 setop3(options[(f[72])][(e+2)])
 setop4(options[(f[72])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2203,7 +1461,7 @@ setop2(options[(f[73])][(e+1)])
 setop3(options[(f[73])][(e+2)])
 setop4(options[(f[73])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2218,7 +1476,7 @@ setop2(options[(f[74])][(e+1)])
 setop3(options[(f[74])][(e+2)])
 setop4(options[(f[74])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2233,7 +1491,7 @@ setop2(options[(f[75])][(e+1)])
 setop3(options[(f[75])][(e+2)])
 setop4(options[(f[75])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2248,7 +1506,7 @@ setop2(options[(f[76])][(e+1)])
 setop3(options[(f[76])][(e+2)])
 setop4(options[(f[76])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2263,7 +1521,7 @@ setop2(options[(f[77])][(e+1)])
 setop3(options[(f[77])][(e+2)])
 setop4(options[(f[77])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2278,7 +1536,7 @@ setop2(options[(f[78])][(e+1)])
 setop3(options[(f[78])][(e+2)])
 setop4(options[(f[78])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2293,7 +1551,7 @@ setop2(options[(f[79])][(e+1)])
 setop3(options[(f[79])][(e+2)])
 setop4(options[(f[79])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2308,7 +1566,7 @@ setop2(options[(f[80])][(e+1)])
 setop3(options[(f[80])][(e+2)])
 setop4(options[(f[80])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 }
 function get82(){
@@ -2322,7 +1580,7 @@ setop2(options[(f[81])][(e+1)])
 setop3(options[(f[81])][(e+2)])
 setop4(options[(f[81])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2337,7 +1595,7 @@ setop2(options[(f[82])][(e+1)])
 setop3(options[(f[82])][(e+2)])
 setop4(options[(f[82])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2352,7 +1610,7 @@ setop2(options[(f[83])][(e+1)])
 setop3(options[(f[83])][(e+2)])
 setop4(options[(f[83])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2367,7 +1625,7 @@ setop2(options[(f[84])][(e+1)])
 setop3(options[(f[84])][(e+2)])
 setop4(options[(f[84])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2382,7 +1640,7 @@ setop2(options[(f[85])][(e+1)])
 setop3(options[(f[85])][(e+2)])
 setop4(options[(f[85])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2397,7 +1655,7 @@ setop2(options[(f[86])][(e+1)])
 setop3(options[(f[86])][(e+2)])
 setop4(options[(f[86])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2412,7 +1670,7 @@ setop2(options[(f[87])][(e+1)])
 setop3(options[(f[87])][(e+2)])
 setop4(options[(f[87])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2427,7 +1685,7 @@ setop2(options[(f[88])][(e+1)])
 setop3(options[(f[88])][(e+2)])
 setop4(options[(f[88])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2442,7 +1700,7 @@ setop2(options[(f[89])][(e+1)])
 setop3(options[(f[89])][(e+2)])
 setop4(options[(f[89])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2457,7 +1715,7 @@ setop2(options[(f[90])][(e+1)])
 setop3(options[(f[90])][(e+2)])
 setop4(options[(f[90])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2472,7 +1730,7 @@ setop2(options[(f[91])][(e+1)])
 setop3(options[(f[91])][(e+2)])
 setop4(options[(f[91])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2487,7 +1745,7 @@ setop2(options[(f[92])][(e+1)])
 setop3(options[(f[92])][(e+2)])
 setop4(options[(f[92])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2502,7 +1760,7 @@ setop2(options[(f[93])][(e+1)])
 setop3(options[(f[93])][(e+2)])
 setop4(options[(f[93])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2517,7 +1775,7 @@ setop2(options[(f[94])][(e+1)])
 setop3(options[(f[94])][(e+2)])
 setop4(options[(f[94])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2532,7 +1790,7 @@ setop2(options[(f[95])][(e+1)])
 setop3(options[(f[95])][(e+2)])
 setop4(options[(f[95])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2547,7 +1805,7 @@ setop2(options[(f[96])][(e+1)])
 setop3(options[(f[96])][(e+2)])
 setop4(options[(f[96])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2562,7 +1820,7 @@ setop2(options[(f[97])][(e+1)])
 setop3(options[(f[97])][(e+2)])
 setop4(options[(f[97])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2577,7 +1835,7 @@ setop2(options[(f[98])][(e+1)])
 setop3(options[(f[98])][(e+2)])
 setop4(options[(f[98])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2592,7 +1850,7 @@ setop2(options[(f[99])][(e+1)])
 setop3(options[(f[99])][(e+2)])
 setop4(options[(f[99])][(e+3)])
 // console.log("d",d,data,op,op2,op3,op4);
-console.log("d..",options[d][d+3]);
+ 
 e=e+1;
 
 }
@@ -2612,6 +1870,7 @@ let year=date.getFullYear();
   return (
    <div>
       <div class="row">
+      {data5 && <FinalMod/> }
   <div class="column">
     <table border="0" style={{width:800}}>
       <tr>
@@ -2630,21 +1889,21 @@ Name: {localStorage.getItem("name")}
 <tr>
 </tr>
       <tr>
-        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1(1)}/>
+        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
 {data && op}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r1(2)}/>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r2}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op2}
 </th>
       </tr>
       <tr>
-        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r1(3)} />
+        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r3} />
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op3}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r1(4)}/>
+<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r4}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op4}
 </th>
@@ -2666,15 +1925,18 @@ Name: {localStorage.getItem("name")}
           <br/>
           <br/>
         </th>
+        
         <th>
 <button type="button" class="btn btn-success"  style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getSave} >Save</button>      
-        </th>
+        </th>        
       </tr>
 <tr rowspan="4">
   <th colspan="2"></th>
 </tr>
 <tr>
-  <th colspan="2"></th>
+  <th colspan="1">
+  <button style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getResult}>Submit</button>      
+  </th>
 </tr>
 <tr>
 <th colspan="2"></th>
@@ -2699,7 +1961,7 @@ Name: {localStorage.getItem("name")}
   <div class="column">
     <table border="0" style={{width:400,marginLeft:180}}>
       <tr>
-        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:23}}>Hit the number to navigate the Question</button></th>
+        <th colspan="10"><button style={{borderRadius:'8px 2px',background:'teal', color:'white',marginLeft:0,width:440,height:30,fontSize:'12pt'}}>Hit the number to navigate the Question</button></th>
       </tr>
       <tr>
 <th><button style={{borderRadius:'5px 3px',height:40,width:40,background:'teal', color:'white'}} onClick={get1}>1</button></th>
@@ -2844,6 +2106,4 @@ const mapDispatchToProps =dispatch => {
   return{
     sendq:()=>dispatch(sendq())
   }
-  
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Qp)
