@@ -5,24 +5,39 @@ import qreducer from '../reducers/qreducer';
 import { questions } from './setq1';
  import { options } from './setop1';
 import { useState } from 'react';
+import FinalMod from './FinalMod';
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 let d=0;
 let fr=0;
 let setq1=[]
-
+let h=0,h1=0;
 let ua={};
-let q1=[],q2=[],q3=[],q4=[];
-let a1=[],a2=[],a3=[],a4=[];
-
+let q1=[],q2=[],q3=[],q4=[],q5=[],q6=[];
+let a1=[],a2=[],a3=[],a4=[],a5=[],a6=[];
+let m=new Map();
  export default function Qp(props) {
  let f=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
  ];
-
+ let f1=false;
+ const [open, setOpen] = React.useState(false);
+    const handleClose = () => setOpen(false);
   const [data, getdata]=useState(false)
   const [data1, getdata1]=useState(0)
-  const [data2, getdata2]=useState(false)
+  const [data2, getdata2]=useState(f1)
   const [data3, getdata3]=useState(0)
 
+  const [data5, getdata5]=useState(false)
   const [op, setop]=useState(0);
   const [op2, setop2]=useState(0);
   const [op3, setop3]=useState(0);
@@ -61,22 +76,24 @@ function r4()
   //  console.log("r4")
 }
 
+
 function getResult()
 {
   let i;
- 
+ getdata5(true);
   let r="abc";
   let t="";
 let n="";
 let m1="";
 
-let m=new Map();
+
 let v=new Map();
 let w=new Map();
 let fir=0;
 let fir1=0;
 let fir3=0;
-
+let correct;
+let incorrect;
 
 for(i=0;i<q1.length-1;i++)
 {
@@ -88,9 +105,11 @@ for(i=0;i<q1.length-1;i++)
  {
     
       m.set(q1[i],q1[i+1]) ;
+    
  }
 
 }
+
 }
 // console.log("1 to 9",m);
 let k=m.keys();
@@ -99,6 +118,9 @@ for(const [keys,value] of m)
 {
   let s=keys[0];
   fm1.set(s,value);
+  a1[h]=s;
+  a2[h]=value;
+  h=h+1;
   //console.log(s);
 }
 console.log("...1",fm1);
@@ -111,10 +133,14 @@ for(i=0;i<q1.length-1;i++)
         {
             // console.log(q1[i]);
               v.set(q1[i],q1[i+1]) ;
+              
         }
 
     }
 }
+console.log("kk",a1);
+localStorage.setItem("q",a1);
+localStorage.setItem("q2",a2);
 let k1=v.keys();
 let fm2=new Map();
 for(const [keys,value] of v)
@@ -122,8 +148,14 @@ for(const [keys,value] of v)
   let s1=keys[0];
   let s2=keys[1];
   fm2.set((s1+s2),value);
+  a3[h1]=parseInt((s1+s2));
+  a4[h1]=value;
+  h1=h1+1;
   //console.log(s1);
 }
+localStorage.setItem("a3",a3);
+localStorage.setItem("a4",a4);
+
 console.log("...2",fm2);
 // console.log("10 to 99",v);
 
@@ -139,6 +171,7 @@ for(i=0;i<q1.length-1;i++)
         }
       }
 
+
 }
 let k3=w.keys();
 let fm3=new Map();
@@ -148,7 +181,12 @@ for(const [keys,value] of w)
   let s2=keys[1];
   let s3=keys[2];
   fm3.set((s1+s2+s3),value);
+  a5[h1]=parseInt((s2+s3));
+  a6[h1]=value;
+  h1=h1+1;
 }
+localStorage.setItem("a5",a5);
+localStorage.setItem("a6",a6);
 // console.log(s1);
 // console.log("...3",fm3);
 // console.log("100",w);
@@ -232,9 +270,20 @@ if(key==100 && value==1)
 {
   fir3=fir3+1;
 }
-  }
 
-console.log('final',(fir1+fir+fir3));
+  }
+correct=fir1+fir+fir3;
+incorrect=100-correct;
+console.log('Correct Ans',(correct));
+console.log('Incorrect Ans',incorrect);
+console.log("m",m);
+
+  localStorage.setItem("v",v);
+  localStorage.setItem("w",w);
+  localStorage.setItem("fm1",fm1);
+  localStorage.setItem("fm2",fm2);
+  localStorage.setItem("fm3",fm3);
+  localStorage.setItem("cr",correct);
 }
 
 function getSave()
@@ -296,11 +345,10 @@ setop4(options[d][3])
 
 
 React.useEffect(()=>{
+  
   let e=0;
 
 get1();
-
-
 
   setname(localStorage.getItem("name"));
   // setresult(1);
@@ -1822,6 +1870,7 @@ let year=date.getFullYear();
   return (
    <div>
       <div class="row">
+      {data5 && <FinalMod/> }
   <div class="column">
     <table border="0" style={{width:800}}>
       <tr>

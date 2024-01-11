@@ -60,7 +60,7 @@ export default function CCCmod() {
       console.log("Name",localStorage.getItem("name"));
     })
   return (
-    <div  >
+    <div >
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2} columns={10} style={{background:'#D5F0C0'}}>
         <Grid xs={2} style={{'borderColor':"teal"}}>
