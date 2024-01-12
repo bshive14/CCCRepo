@@ -11,6 +11,7 @@ import IOTmod from './components/TopNavModal/IOTmod';
 import { RankMod } from './components/RankMod';
 
 
+
  export default function App(props) {
   return (
     <div className="App" style={{"backgroundColor":'HEX #6600ff'}} >
@@ -56,7 +57,7 @@ import { RankMod } from './components/RankMod';
 </div>
 
 <div>
-
+{/* <CustomizedTables/> */}
 
   </div>
 

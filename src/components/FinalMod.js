@@ -4,6 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { CropPortrait } from '@mui/icons-material';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -22,6 +23,9 @@ export default function FinalMod() {
     let s4= localStorage.getItem("a4");
     let s5= localStorage.getItem("a5");
     let s6= localStorage.getItem("a6");
+    let cr=localStorage.getItem("crop");
+    let incr=localStorage.getItem("incrop")
+    let resul=localStorage.getItem("resl");
     const [open, setOpen] = React.useState(false);
     const handleClose = () => setOpen(false);
 const [g,setg]=React.useState(0);
@@ -30,8 +34,13 @@ const [g3,setg3]=React.useState(0);
 const [g4,setg4]=React.useState(0);
 const [g5,setg5]=React.useState(0);
 const [g6,setg6]=React.useState(0);
+const [g7,setg7]=React.useState(0);
+const [g8,setg8]=React.useState(0);
+const [g9,setg9]=React.useState(0);
     React.useEffect(()=>{
-        
+        setg7(cr);
+        setg8(incr)
+        setg9(resul);
     for(let i=0;i<s.length-1;i++)
     {
         setg(s);
@@ -54,14 +63,21 @@ const [g6,setg6]=React.useState(0);
   return (
     <div >
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} columns={10} style={{background:'white', width:1340,height:900,marginTop:-30}}>
+      <Grid container spacing={2} columns={10} style={{background:'white', width:1340,height:980,marginTop:-20}}>
         <Grid xs={2} style={{'borderColor':"teal"}}>
  
-        <Card style={{"borderRadius":"0px","height":900,"width":1340}} >
-        <table border={2} style={{align:'right',width:300}}>
-        <tr>
+        <Card style={{"borderRadius":"0px","height":950,"width":1340}} >
+        <table border="0" align="center" style={{width:800,marginLeft:30}}>
+      <tr>
+<th colspan="4" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
+Course on Computer Concepts (CCC)<br/> Result: {g9}
+</th>
+</tr>
+      <tr style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
         <th>Attempted questions</th>
             <th>Your choices</th> 
+            <th>Correct Answer</th>
+            <th>Incorrect Answer</th>
         </tr>
         <tr>
            <th>
@@ -70,29 +86,21 @@ const [g6,setg6]=React.useState(0);
             <th>
            {g2},{g4},{g6}
             </th>
-        </tr>
-        <tr>
-        <th>
-                console.console.log(v);
-            </th>
-        <th>
-            console.log(s2);
+            <th>
+
             </th>
             <th>
-            console.log(fm2);
+      {g7}
+            </th>
+            <th>
+{g8}
             </th>
         </tr>
         <tr>
-        <th>
-                console.console.log(w);
+          <th>
+            
             </th>
-        <th>
-            console.log(s3);
-            </th>
-            <th>
-            console.log(fm3);
-            </th>
-        </tr>
+          </tr>
         </table>
         <Modal
         open={open}

@@ -6,6 +6,9 @@ import { questions } from './setq1';
  import { options } from './setop1';
 import { useState } from 'react';
 import FinalMod from './FinalMod';
+import CustomizedTables from './CustomizedTables';
+import Myshow from './Myshow';
+// import CustomizedTables from './components/CustomizedTables';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -94,7 +97,7 @@ let fir1=0;
 let fir3=0;
 let correct;
 let incorrect;
-
+let ps;
 for(i=0;i<q1.length-1;i++)
 {
     if(typeof(q1[i])==typeof(r))
@@ -155,7 +158,7 @@ for(const [keys,value] of v)
 }
 localStorage.setItem("a3",a3);
 localStorage.setItem("a4",a4);
-
+localStorage.setItem("finm",m);
 console.log("...2",fm2);
 // console.log("10 to 99",v);
 
@@ -273,7 +276,17 @@ if(key==100 && value==1)
 
   }
 correct=fir1+fir+fir3;
+if(correct>53)
+{
+  ps="Pass";
+}
+else{
+  ps="Fail";
+}
+localStorage.setItem("resl",ps);
+localStorage.setItem("crop",correct);
 incorrect=100-correct;
+localStorage.setItem("incrop",incorrect);
 console.log('Correct Ans',(correct));
 console.log('Incorrect Ans',incorrect);
 console.log("m",m);
@@ -1871,8 +1884,9 @@ let year=date.getFullYear();
    <div>
       <div class="row">
       {data5 && <FinalMod/> }
+     // {data5 && <Myshow/> }
   <div class="column">
-    <table border="0" style={{width:800}}>
+    <table border="0" style={{width:800,marginLeft:30}}>
       <tr>
 <th colspan="6" rowspan="2" style={{fontFamily:'Times New Roman',color:'teal',fontSize:'18pt', textAlign:'center'}}>
 Course on Computer Concepts (CCC) Exam<br/>
@@ -1883,77 +1897,66 @@ Name: {localStorage.getItem("name")}
 <tr>
 </tr>
 <tr>
-        <th colspan="2" rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}} >{data &&  data1}</th>
+        <th colspan="2" rowSpan={2} align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}} >{data &&  data1}</th>
         
       </tr>
 <tr>
+  
 </tr>
       <tr>
-        <th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1}/>
+        <th rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={r1}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
 {data && op}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r2}/>
+<th rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={r2}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op2}
 </th>
       </tr>
       <tr>
-        <th  align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r3} />
+
+      </tr>
+      <tr>
+        <th rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" onChange={r3} />
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op3}
 </th>
-<th align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r4}/>
+<th rowspan="2" align="left" style={{fontFamily:'Times New Roman',color:'darkgreen',fontSize:'14pt'}}> <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" onChange={r4}/>
   <label class="form-check-label" for="flexRadioDefault2"/>
   {data && op4}
 </th>
-
       </tr>
-      <tr>
-        <th rowspan="3">
-          <br/>
-        </th>
-      </tr>
-      <tr></tr>
       <tr>
 
       </tr>
-      <tr></tr>
+      <br/><br/>
+      </table>
+      <table border="0" style={{marginLeft:90}}>
       <tr>
-        <th rowspan="3">
-          <br/>
-          <br/>
-          <br/>
-        </th>
-        
-        <th>
+        <th></th>
+        <th style={{textAlign:'center'}}>
 <button type="button" class="btn btn-success"  style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getSave} >Save</button>      
         </th>        
       </tr>
-<tr rowspan="4">
-  <th colspan="2"></th>
-</tr>
-<tr>
-  <th colspan="1">
-  <button style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getResult}>Submit</button>      
-  </th>
-</tr>
-<tr>
-<th colspan="2"></th>
-</tr>
-<tr>
-</tr>
-<tr>
-  <center>
-<th>
+      <br/>
+<tr>  
+  
+<th style={{textAlign:'center'}}>
 <button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}}  onClick={getP}>Previous</button>      
         </th>
-        </center>
+  <th></th>            
 <th>
-  <center>
+  
         <button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white'}} onClick={getQ}>Next</button>      
-        </center>
- </th>
+   </th>
+</tr>
+<tr>
+  <th></th>
+  <th></th>
+  <th></th>
+  <th style={{textAlign:'right'}}>
+  <button style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',marginRight:40}} onClick={getResult}>Submit</button>      
+  </th>
 </tr>
     </table>
   </div>
