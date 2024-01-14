@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { sendq } from '../actions/sendquestion';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import qreducer from '../reducers/qreducer';
 import { questions } from './setq1';
  import { options } from './setop1';
 import { useState } from 'react';
 import FinalMod from './FinalMod';
-import CustomizedTables from './CustomizedTables';
+// import CustomizedTables from './CustomizedTables';
 import Myshow from './Myshow';
 // import CustomizedTables from './components/CustomizedTables';
 const style = {
@@ -21,11 +21,12 @@ const style = {
   p: 4,
 };
 let d=0;
-let fr=0;
-let setq1=[]
+// let fr=0;
+// let setq1=[]
 let h=0,h1=0;
 let ua={};
-let q1=[],q2=[],q3=[],q4=[],q5=[],q6=[];
+let q1=[];
+// q2=[],q3=[],q4=[],q5=[],q6=[];
 let a1=[],a2=[],a3=[],a4=[],a5=[],a6=[];
 let m=new Map();
  export default function Qp(props) {
@@ -33,12 +34,12 @@ let m=new Map();
   51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,	100
  ];
  let f1=false;
- const [open, setOpen] = React.useState(false);
-    const handleClose = () => setOpen(false);
+//  const [open, setOpen] = React.useState(false);
+//     const handleClose = () => setOpen(false);
   const [data, getdata]=useState(false)
   const [data1, getdata1]=useState(0)
   const [data2, getdata2]=useState(f1)
-  const [data3, getdata3]=useState(0)
+  // const [data3, getdata3]=useState(0)
 
   const [data5, getdata5]=useState(false)
   const [op, setop]=useState(0);
@@ -103,7 +104,7 @@ for(i=0;i<q1.length-1;i++)
     if(typeof(q1[i])==typeof(r))
     {
  q1[i]=q1[i].replace("Q","");
-// console.log(q1[i]);
+
  if(parseInt(q1[i].substring(0,1))<10 &&(q1[i].substring(1,2)==")") )
  {
     
@@ -114,7 +115,7 @@ for(i=0;i<q1.length-1;i++)
 }
 
 }
-// console.log("1 to 9",m);
+
 let k=m.keys();
 let fm1=new Map();
 for(const [keys,value] of m)
@@ -132,10 +133,11 @@ for(i=0;i<q1.length-1;i++)
     if(typeof(q1[i])==typeof(r))
     {
 
-        if(parseInt(q1[i].substring(1,2))<99 &&(q1[i].substring(2,3)==")") )
+        if( parseInt(q1[i].substring(1,2))<=99 &&(q1[i].substring(2,3)==")") )
         {
-            // console.log(q1[i]);
+           
               v.set(q1[i],q1[i+1]) ;
+              console.log("11se",q1[i],"ans",q1[i+1]);
               
         }
 
@@ -144,7 +146,7 @@ for(i=0;i<q1.length-1;i++)
 console.log("kk",a1);
 localStorage.setItem("q",a1);
 localStorage.setItem("q2",a2);
-let k1=v.keys();
+
 let fm2=new Map();
 for(const [keys,value] of v)
 {
