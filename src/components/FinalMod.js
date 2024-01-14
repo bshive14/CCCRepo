@@ -80,27 +80,157 @@ Course on Computer Concepts (CCC)<br/> Result: {g9}
             <th>Incorrect Answer</th>
         </tr>
         <tr>
-           <th>
-            {g},{g3},{g5}
-            </th>
-            <th>
-           {g2},{g4},{g6}
-            </th>
-            <th>
+<th>
 
-            </th>
-            <th>
-      {g7}
-            </th>
-            <th>
-{g8}
-            </th>
-        </tr>
-        <tr>
-          <th>
-            
-            </th>
-          </tr>
+<tr>
+<th>
+
+{g[0]}
+</th>
+
+<th>
+{g2[0]}
+
+</th>
+</tr>
+
+
+<tr>
+<th>
+{g[2]}
+
+</th>
+
+<th>
+{g2[2]}
+
+</th>
+</tr>
+
+<tr>
+<th>
+{g[4]}
+
+</th>
+
+<th>
+{g2[4]}
+
+</th>
+</tr>
+
+
+
+
+
+<tr>
+<th>
+{g[6]}
+
+</th>
+
+<th>
+{g2[6]}
+
+</th>
+</tr>
+
+
+
+
+<tr>
+<th>
+{g[8]}
+
+</th>
+
+<th>
+{g2[8]}
+
+</th>
+</tr>
+
+
+
+
+<tr>
+<th>
+{g[10]}
+
+</th>
+
+<th>
+{g2[10]}
+
+</th>
+</tr>
+
+
+
+<tr>
+<th>
+{g[12]}
+
+</th>
+
+<th>
+{g2[12]}
+
+</th>
+</tr>
+
+
+
+<tr>
+<th>
+{g[14]}
+
+</th>
+
+<th>
+{g2[14]}
+
+</th>
+</tr>
+
+
+
+<tr>
+<th>
+{g[16]}
+
+</th>
+
+<th>
+{g2[16]}
+
+</th>
+</tr>
+
+</th>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tr>
+
         </table>
         <Modal
         open={open}
