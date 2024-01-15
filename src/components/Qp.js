@@ -332,7 +332,11 @@ function getSave()
 }
 function getQ(){
    let e=0;
- 
+ if(d==100)
+{
+  alert("You cannot go beyond 100");
+  d=99;
+}
 getdata(true);
 getdata2(false);
 getdata1(questions[d]);
@@ -348,6 +352,11 @@ console.log(d);
 function getP(){
   let e=0;
   d=d-1;
+  if(d<=0)
+  {
+    alert("You Cannot go beyond question 1");
+    d=0;
+  }
 getdata(true);
 getdata1(questions[d]);
 // getdata2(f[d]);
@@ -1886,7 +1895,7 @@ let year=date.getFullYear();
    <div>
       <div class="row">
       {data5 && <FinalMod/> }
-     // {data5 && <Myshow/> }
+    
   <div class="column">
     <table border="0" style={{width:800,marginLeft:30}}>
       <tr>

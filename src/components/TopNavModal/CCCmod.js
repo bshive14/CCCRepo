@@ -109,7 +109,7 @@ export default function CCCmod() {
          <th>
 
          </th>
-        <td><button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',align:'center'}} onClick={Handler1} id="bt1">Start Exam</button>
+        <td><button type="button" class="btn btn-success" style={{height:30,width:90,borderRadius:'8px',borderColor:'teal', borderWidth:2,background:'teal', color:'white',align:'center'}} onClick={Handler1} id="bt1" >Start Exam</button>
         </td>
         </tr>
         </table>
